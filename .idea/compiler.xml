@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jishi-core" />
-        <module name="jishi-admin" />
         <module name="jishi-api" />
         <module name="jishi-db" />
         <module name="litemall-netty" />
@@ -16,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jishi-admin" target="1.8" />
       <module name="jishi-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>

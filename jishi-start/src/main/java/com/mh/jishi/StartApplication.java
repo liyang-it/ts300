@@ -3,6 +3,8 @@ package com.mh.jishi;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mh.jishi.util.BeanUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
@@ -34,11 +37,17 @@ import java.time.Duration;
 @EnableAsync
 @EnableTransactionManagement
 @EnableScheduling
+@Slf4j
 public class StartApplication {
-    private final  static Logger LOGGER = LoggerFactory.getLogger(StartApplication.class);
     public static void main(String[] args) throws Exception {
         SpringApplication.run(StartApplication.class, args);
-        LOGGER.info("============程序启动成功============");
+
+        Environment environment = BeanUtil.getBean(Environment.class);
+
+        String port = environment.getProperty("server.port");
+        String contextPath = environment.getProperty("server.servlet.context-path");
+
+        log.info("============程序启动成功, 访问路径:【{}】, 端口号: 【{}】============", contextPath, port);
 
     }
 

@@ -18,11 +18,6 @@
     <dependencies>
                 <dependency>
                     <groupId>com.mh</groupId>
-                    <artifactId>jishi-admin</artifactId>
-                    <version>${project.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>com.mh</groupId>
                     <artifactId>jishi-api</artifactId>
                     <version>${project.version}</version>
                 </dependency>

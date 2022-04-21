@@ -1,10 +1,6 @@
 package com.mh.jishi.util;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * 响应操作结果
  * <pre>
@@ -49,6 +45,19 @@ public class ResponseUtil<T> {
         this.data = data;
     }
 
+    public static ResponseUtil ok(Object data) {
+        return new ResponseUtil(0, "请求成功", data);
+    }
+
+    public static ResponseUtil fail(int errno, String errmsg) {
+        return new ResponseUtil(errno, errmsg, null);
+    }
+
+    public static ResponseUtil fail(int errno, String errmsg, String data) {
+        return new ResponseUtil(errno, errmsg, data);
+
+    }
+
     @Override
     public String toString() {
         return "ResponseUtil{" +
@@ -80,87 +89,6 @@ public class ResponseUtil<T> {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    public static ResponseUtil ok() {
-        return new ResponseUtil(0, "請求成功", null);
-    }
-    public static ResponseUtil okUpd() {
-        return new ResponseUtil(0, "修改成功", null);
-    }
-    public static ResponseUtil okDel() {
-        return new ResponseUtil(0, "刪除成功", null);
-    }
-    public static ResponseUtil ok(String msg, Object data) {
-        return new ResponseUtil(0, msg, data);
-    }
-
-    public static ResponseUtil ok(Object data) {
-        return new ResponseUtil(0, "請求成功", data);
-    }
-
-
-    /**
-     * 业务状态
-     * 状态码为 401
-     * @return
-     */
-    public static ResponseUtil business(String msg){
-        return fail(401, msg, null);
-    }
-
-    public static ResponseUtil server(String msg){
-        return fail(501, msg, null);
-    }
-    public static ResponseUtil fail() {
-        return new ResponseUtil(-1, "請求失敗", null);
-    }
-
-    public static ResponseUtil fail(int errno, String errmsg) {
-        return new ResponseUtil(errno, errmsg, null);
-    }
-
-    public static ResponseUtil fail( String errmsg) {
-        return new ResponseUtil(401, errmsg, null);
-    }
-
-    public static ResponseUtil fail(int errno, String errmsg, String data) {
-        return new ResponseUtil(errno, errmsg, data);
-    }
-
-    public static ResponseUtil badArgument() {
-        return fail(401, "參數不對", null);
-    }
-    public static ResponseUtil notFound(){
-        return fail(404, "數據不存在!", null);
-    }
-    public static ResponseUtil badArgumentValue() {
-        return fail(402, "參數值不對", null);
-    }
-
-    public static ResponseUtil unlogin() {
-        return fail(601, "請登錄", null);
-    }
-
-    public static ResponseUtil serious() {
-        return fail(502, "系統內部異常", null);
-    }
-
-
-    public static ResponseUtil unsupport() {
-        return fail(503, "業務不支持", null);
-    }
-
-    public static ResponseUtil updatedDateExpired() {
-        return fail(504, "更新數據已經失效", null);
-    }
-
-    public static ResponseUtil updatedDataFailed() {
-        return fail(505, "更新數據失敗", null);
-    }
-
-    public static ResponseUtil unauthz() {
-        return fail(506, "您沒有此功能權限", null);
     }
 }
 

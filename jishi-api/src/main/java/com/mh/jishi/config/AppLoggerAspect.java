@@ -1,6 +1,5 @@
 package com.mh.jishi.config;
 
-import com.mh.jishi.annotation.ApiDesc;
 import com.mh.jishi.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -48,12 +47,6 @@ public class AppLoggerAspect {
         //获取method
         MethodSignature method = (MethodSignature)joinPoint.getSignature();
         log.info("请求方式: " + request.getMethod());
-        // 获取请求方法 描述注解信息
-        ApiDesc apiDesc = method.getMethod().getAnnotation(ApiDesc.class);
-        if(apiDesc != null){
-            String desc = apiDesc.methodDesc();
-            log.info("请求接口描述: " + desc);
-        }
         //获取请求参数
         log.info("请求参数列表: : " + Arrays.toString(joinPoint.getArgs()));
     }

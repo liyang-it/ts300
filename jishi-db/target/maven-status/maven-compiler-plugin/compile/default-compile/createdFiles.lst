@@ -1,0 +1,10 @@
+com\mh\jishi\config\ServiceException.class
+com\mh\jishi\util\RedisUtil.class
+com\mh\jishi\mybatis\JsonNodeTypeHandler.class
+com\mh\jishi\config\MybatisPlusConfig.class
+com\mh\jishi\redis\redisConfig.class
+com\mh\jishi\config\AdminAuthException.class
+com\mh\jishi\config\RedisExpiredListener.class
+com\mh\jishi\constants\RedisKeyPrefix.class
+com\mh\jishi\mybatis\JsonIntegerArrayTypeHandler.class
+com\mh\jishi\mybatis\JsonStringArrayTypeHandler.class
